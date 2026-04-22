@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Insight AI Early Access</title>
+    <style>
+      :root {
+        --navy: #11253d;
+        --sky: #dff4ff;
+        --mint: #dff7ee;
+        --cyan: #3eb8d4;
+        --teal: #197b8f;
+        --ink: #18212b;
+        --white: #ffffff;
+        --line: rgba(17, 37, 61, 0.12);
+        --card: rgba(255, 255, 255, 0.84);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(62, 184, 212, 0.18), transparent 28%),
+          radial-gradient(circle at 85% 12%, rgba(25, 123, 143, 0.16), transparent 24%),
+          linear-gradient(180deg, #f4fbff 0%, #e9f6fb 52%, #eefaf5 100%);
+      }
+
+      .page {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 28px 20px 56px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.76);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.82rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 24px;
+        margin-top: 24px;
+      }
+
+      .panel {
+        border-radius: 28px;
+        border: 1px solid var(--line);
+        background: var(--card);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 26px 46px rgba(17, 37, 61, 0.08);
+      }
+
+      .hero-copy {
+        padding: 44px;
+      }
+
+      .hero-form {
+        padding: 32px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        color: var(--navy);
+      }
+
+      h1 {
+        font-size: clamp(2.9rem, 5vw, 5rem);
+        line-height: 0.95;
+        margin-top: 16px;
+      }
+
+      .subhead {
+        margin-top: 18px;
+        font-size: 1.12rem;
+        line-height: 1.75;
+        max-width: 40rem;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .pill {
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(25, 123, 143, 0.08);
+        border: 1px solid rgba(25, 123, 143, 0.14);
+        font-size: 0.94rem;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .stat {
+        padding: 18px;
+        border-radius: 22px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.8rem;
+        color: var(--teal);
+      }
+
+      .signup-copy {
+        margin: 8px 0 18px;
+        line-height: 1.7;
+      }
+
+      .signup-form {
+        display: grid;
+        gap: 12px;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        font-size: 0.94rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 16px;
+        border: 1px solid rgba(17, 37, 61, 0.16);
+        background: #ffffff;
+        font: inherit;
+      }
+
+      button {
+        border: none;
+        border-radius: 16px;
+        padding: 15px 18px;
+        cursor: pointer;
+        color: #ffffff;
+        font: inherit;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--navy), var(--teal));
+      }
+
+      .note {
+        margin-top: 12px;
+        font-size: 0.9rem;
+        color: rgba(24, 33, 43, 0.72);
+        line-height: 1.6;
+      }
+
+      .success {
+        display: none;
+        margin-top: 16px;
+        padding: 16px;
+        border-radius: 18px;
+        background: rgba(223, 247, 238, 0.92);
+        border: 1px solid rgba(25, 123, 143, 0.18);
+      }
+
+      .countdown {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .count-box {
+        padding: 14px 10px;
+        text-align: center;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--line);
+      }
+
+      .count-box strong {
+        display: block;
+        font-size: 1.45rem;
+        color: var(--teal);
+      }
+
+      .section {
+        margin-top: 24px;
+      }
+
+      .section-card {
+        padding: 28px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .card {
+        padding: 22px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid var(--line);
+      }
+
+      .quote {
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 24px;
+        padding: 10px 4px 0;
+        color: rgba(24, 33, 43, 0.72);
+        font-size: 0.94rem;
+      }
+
+      @media (max-width: 920px) {
+        .hero,
+        .stats,
+        .grid,
+        .countdown {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy,
+        .hero-form,
+        .section-card {
+          padding: 24px;
+        }
+
+        .footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="eyebrow">Health Insight AI early access</div>
+
+      <section class="hero">
+        <div class="panel hero-copy">
+          <div class="pill">A calmer first step when symptoms feel stressful</div>
+          <h1>Understand symptoms without the internet spiral.</h1>
+          <p class="subhead">
+            Health Insight AI helps people move from panic to preparation with a
+            guided, conversational symptom-support experience. Join the early
+            access list to try a health chatbot designed to feel more grounded,
+            more private, and more useful than generic searching.
+          </p>
+
+          <div class="pill-row">
+            <span class="pill">Live product already available</span>
+            <span class="pill">Persistent health context</span>
+            <span class="pill">Designed for privacy-aware users</span>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>10</strong>
+              <span>Target users for this week's launch sprint</span>
+            </div>
+            <div class="stat">
+              <strong>5</strong>
+              <span>Completed symptom chats needed to hit success</span>
+            </div>
+            <div class="stat">
+              <strong>3</strong>
+              <span>Early testers already helped shape the next version</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel hero-form">
+          <h2>Get launch updates</h2>
+          <p class="signup-copy">
+            Be first to see the refined messaging, guest experience ideas, and
+            the next round of Health Insight AI improvements.
+          </p>
+
+          <form class="signup-form" id="waitlist-form">
+            <label>
+              First name
+              <input type="text" name="name" placeholder="Jordan" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="jordan@email.com" required />
+            </label>
+            <button type="submit">Join the early access list</button>
+          </form>
+
+          <p class="note">
+            Demo capture only. Signups are stored in this browser so you can
+            show a working automation in class.
+          </p>
+
+          <div class="success" id="success-message"></div>
+
+          <h3 style="margin-top: 24px;">Countdown to launch check-in</h3>
+          <div class="countdown" id="countdown">
+            <div class="count-box"><strong>--</strong><span>Days</span></div>
+            <div class="count-box"><strong>--</strong><span>Hours</span></div>
+            <div class="count-box"><strong>--</strong><span>Minutes</span></div>
+            <div class="count-box"><strong>--</strong><span>Seconds</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="panel section-card">
+          <h2>Why this matters</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>Less panic</h3>
+              <p>
+                The product is built to give users a calmer, more contextual
+                first step than frantic worst-case internet searches.
+              </p>
+            </article>
+            <article class="card">
+              <h3>More continuity</h3>
+              <p>
+                Persistent chat history and saved profile context make the
+                experience feel more like guided support than a one-off answer.
+              </p>
+            </article>
+            <article class="card">
+              <h3>More trust</h3>
+              <p>
+                Security hardening, authenticated access, and linked citations
+                reinforce a more credible health experience.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="panel section-card">
+          <h2>Early feedback highlights</h2>
+          <div class="grid">
+            <article class="card quote">
+              <p>
+                "I was not sure how it was different from ChatGPT or another AI
+                platform."
+              </p>
+            </article>
+            <article class="card quote">
+              <p>
+                Testers liked that conversations were organized and deletable by
+                time period.
+              </p>
+            </article>
+            <article class="card quote">
+              <p>
+                Multiple testers wanted a feature-gated model so people can see
+                value before signing up.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="panel section-card">
+          <h2>How it works</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>1. Sign up securely</h3>
+              <p>
+                Users create an account with Supabase Auth to access a protected
+                symptom-support experience.
+              </p>
+            </article>
+            <article class="card">
+              <h3>2. Enter symptoms and context</h3>
+              <p>
+                The dashboard collects symptom details and health context in a
+                cleaner flow than static health articles.
+              </p>
+            </article>
+            <article class="card">
+              <h3>3. Get insights and next steps</h3>
+              <p>
+                Gemini-powered responses generate educational guidance, clinical
+                summaries, and a more prepared starting point for care.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Health Insight AI team</span>
+        <span>Live app: https://insight-nurse-bot.lovable.app</span>
+      </footer>
+    </main>
+
+    <script>
+      const launchDate = new Date("2026-04-24T12:30:00");
+      const countdown = document.getElementById("countdown");
+      const form = document.getElementById("waitlist-form");
+      const successMessage = document.getElementById("success-message");
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = launchDate - now;
+
+        if (diff <= 0) {
+          countdown.innerHTML =
+            '<div class="count-box" style="grid-column: 1 / -1;"><strong>Ready now</strong><span>The class demo window has arrived.</span></div>';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        countdown.innerHTML = `
+          <div class="count-box"><strong>${days}</strong><span>Days</span></div>
+          <div class="count-box"><strong>${hours}</strong><span>Hours</span></div>
+          <div class="count-box"><strong>${minutes}</strong><span>Minutes</span></div>
+          <div class="count-box"><strong>${seconds}</strong><span>Seconds</span></div>
+        `;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const name = formData.get("name");
+        const email = formData.get("email");
+
+        const existing = JSON.parse(localStorage.getItem("health-insight-ai-waitlist") || "[]");
+        existing.push({
+          name,
+          email,
+          createdAt: new Date().toISOString(),
+        });
+        localStorage.setItem("health-insight-ai-waitlist", JSON.stringify(existing));
+
+        successMessage.style.display = "block";
+        successMessage.innerHTML = `<strong>${name}, you are on the list.</strong><br />This demo signup was saved locally. Current demo signup count: <strong>${existing.length}</strong>.`;
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
