@@ -4,7 +4,7 @@
 Health Insight AI is a live health chatbot that helps people understand symptoms, identify possible next steps, and feel more prepared before seeking medical care. The app is designed for users who feel anxious, uncertain, or under-supported when trying to decide whether symptoms require professional attention.
 
 ## Team
-- Team member names can be added here later
+- Ella Ingersoll, Marilyn Diaz, Baruni Naik
 
 ## Tech Stack
 - React and Vite for the frontend
