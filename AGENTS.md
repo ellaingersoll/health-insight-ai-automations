@@ -1,42 +1,40 @@
-# Health Insight AI — Pre-Launch Workspace
+# HyperFrames Video Instructions For Codex
 
-## Project Overview
-Health Insight AI is a live health chatbot that helps people understand symptoms, identify possible next steps, and feel more prepared before seeking medical care. The app is designed for users who feel anxious, uncertain, or under-supported when trying to decide whether symptoms require professional attention.
+Use the HyperFrames plugin for this project.
 
-## Team
-- Ella Ingersoll, Marilyn Diaz, Baruni Naik
+Build the launch video as a HyperFrames video project, not as a normal web page, slide deck, or plain screen recording.
 
-## Tech Stack
-- React and Vite for the frontend
-- Tailwind CSS for styling
-- Supabase Edge Functions for backend logic
-- Supabase Auth for authentication
-- PostgreSQL for persistent user and chat data
-- Gemini 2.5 Flash for educational health responses
-- GitHub for version control
-- Vercel for hosting
-- Lucide Icons for interface icons
+Use HyperFrames to:
+- create the video composition
+- animate scenes
+- add real app screenshots or screen captures
+- add music
+- add natural-sounding voiceover if available
+- preview the video
+- render the final video file
 
-## Live URL
-https://insight-nurse-bot.lovable.app
+For rough cuts, prioritize clarity over polish.
 
-## Key User Feedback Themes
-- The core experience works end to end and feels intuitive
-- Chat history organization and persistence are meaningful strengths
-- Users need a clearer explanation of how the product is different from ChatGPT
-- A feature-gated guest experience could reduce friction and improve competitiveness
+Before building, propose:
+- a short script
+- a simple storyboard
+- the intended tone
+- what app screens will be used
 
-## Launch Goal
-This week, get 10 users to try Health Insight AI and achieve at least 5 completed symptom chats.
+Pause for feedback before making the full rough cut.
 
-## Current Phase
-Pre-launch toolkit — building marketing and operations automations for launch readiness.
+Before reporting that the work is done, verify:
+- the preview opens
+- the video plays
+- text is readable
+- app screens are clear
+- music is audible
+- voiceover is understandable if used
+- music does not overpower the voice
+- a rendered video file exists
 
-## Project Context Files
-Detailed project knowledge lives in `my-project-context/`:
-- `product-summary.md` — Full product description
-- `tech-stack.md` — Architecture and services
-- `user-feedback.md` — Raw user testing results
-- `competitors.md` — Competitive landscape
-- `launch-goals.md` — Launch targets and success metrics
-- `automation-selections.md` — Chosen automations for Module 3.2
+When finished, report:
+- where to preview the HyperFrames project
+- where the rendered video file is
+- what choices were made
+- what still needs human judgment
